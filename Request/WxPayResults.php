@@ -20,6 +20,10 @@ class WxPayResults extends WxPayDataBase
      */
     public function MakeSign($config, $needSignType = false)
     {
+        return parent::MakeSign($config,$needSignType);
+        //搞笑，官方自己重写自己父类方法然后用不了
+        //本方法就是用于生成Sign，你这里还GetSign，用个屁
+
         //签名步骤一：按字典序排序参数
         ksort($this->values);
         $string = $this->ToUrlParams();

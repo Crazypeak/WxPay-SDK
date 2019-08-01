@@ -6,7 +6,9 @@
  *
  */
 namespace WxPay;
-class WxPayNotify extends WxPayNotifyReply
+use WxPay\Request\WxPayNotifyResults;
+
+class WxPayNotify extends WxPayNotifyResults
 {
 	private $config = null;
 	/**

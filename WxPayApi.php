@@ -1,6 +1,10 @@
 <?php
 namespace WxPay;
 
+use WxPay\Request\WxPayReport;
+use WxPay\Request\WxPayResults;
+use WxPay\Request\WxPayNotifyResults;
+
 /**
  * 
  * 接口访问类，包含所有微信支付API列表的封装，类中方法为static方法，
