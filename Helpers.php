@@ -56,7 +56,7 @@ class Helpers
 
         //设置回调函数接口
         $input->SetNotify_url(SITE_URL . 'Notify');
-        $input->SetTrade_type($type);
+        $input->SetTrade_type('APP');
         //JSAPI支付需额外设置OPENID
         //$input->SetOpenid("OPENID");
         $wx_result = WxPayApi::unifiedOrder($this->wxConfig, $input);
@@ -79,7 +79,7 @@ class Helpers
             //预支付订单唯一凭证，两小时有效，不能再次获取 == 缓特么得存
             $signData->SetData('prepayid', $result['prepay_id']);
 
-            $result['sign'] = $signData->SetSign($wxConfig);
+            $result['sign'] = $signData->SetSign($this->wxConfig);
             return $result;
         }
 
@@ -146,6 +146,7 @@ class Helpers
 
         $xml = $resultObj->ToXml();
         WxpayApi::replyNotify($xml);
+        return $result;
     }
 
     /**
